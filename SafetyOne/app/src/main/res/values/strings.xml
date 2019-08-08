@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Safety One</string>
+    <string name="header_slogan">Help US Help YOU</string>
+    <string name="password_hint">Password</string>
+    <string name="email_hint">Email</string>
+    <string name="username_hint">Username</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="sign_in">Sign In</string>
+    <string name="no_account">No Account?</string>
+    <string name="sign_up">Register</string>
+    <string name="remember">Keep Me Signed In</string>
+</resources>
