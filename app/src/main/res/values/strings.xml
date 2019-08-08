@@ -10,4 +10,22 @@
     <string name="no_account">No Account?</string>
     <string name="sign_up">Register</string>
     <string name="remember">Keep Me Signed In</string>
+    <string name="reg_one">Part 1/2: General</string>
+    <string name="select_card">Select Card Type</string>
+    <string name="card_number">XXXX-XXXX-XXXX-XXXX</string>
+    <string name="year">Y</string>
+    <string name="month">M</string>
+    <string name="date">D</string>
+    <string name="slash">/</string>
+    <string name="good_through">Good Thru</string>
+    <string name="card_code">CVV</string>
+    <string name="address_line_one">Street Address Line 1</string>
+    <string name="address_line_two">Street Address Line 2 (apt, building, ...)</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
+    <string name="zipcode">ZIP</string>
+    <string name="income_text">Annual Income</string>
+    <string name="income">123456</string>
+    <string name="dollar">$</string>
+    <string name="next">Next</string>
 </resources>
