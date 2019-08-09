@@ -11,7 +11,9 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static java.lang.StrictMath.abs;
 
@@ -26,8 +28,17 @@ public class BudgetActivity extends AppCompatActivity {
     private boolean finished = false;
     private User user;
 
+    private long card_num;
+    private CardType cardType;
+    private int income, zip, cvv, dateOne, dateTwo, monthOne, monthTwo, yearOne, yearTwo, number;
+    private String email, state, addressTwo, street, firstName, lastName, city;
+
+    private Map<String, String> passData = new HashMap<>();
+
+
+
     //Supposed to be initialized with intent
-    private int income;// = 5000;
+//    private int income;// = 5000;
     private int age;// = 18;
 
     ArrayList<Category> categoryList = new ArrayList<>();
@@ -39,12 +50,32 @@ public class BudgetActivity extends AppCompatActivity {
         setContentView(R.layout.registration_activity_budget);
 
         wireWidgets();
+        this.user = new User();
 
         //Fetching Intents
         Intent intent = getIntent();
 //        this.income =intent.getIntExtra("income", 5114);
 //        this.age = intent.getIntExtra("age", 38);
-        this.user = intent.getSerializableExtra("user");
+        this.card_num = Long.getLong(intent.getStringExtra("card_num"));
+        this.cardType = CardType.valueOf(intent.getStringExtra("card_type"));
+        this.income = Integer.getInteger(intent.getStringExtra("income"));
+        this.zip = Integer.getInteger(intent.getStringExtra("zip"));
+        this.cvv = Integer.getInteger(intent.getStringExtra("cvv"));
+        this.dateOne = Integer.getInteger(intent.getStringExtra("dateOne"));
+        this.dateTwo = Integer.getInteger(intent.getStringExtra("dateTwo"));
+        this.monthOne = Integer.getInteger(intent.getStringExtra("monthOne"));
+        this.monthTwo = Integer.getInteger(intent.getStringExtra("monthTwo"));
+        this.yearOne = Integer.getInteger(intent.getStringExtra("yearOne"));
+        this.yearTwo = Integer.getInteger(intent.getStringExtra("yearTwo"));
+        this.number = Integer.getInteger(intent.getStringExtra("number"));
+        this.email = intent.getStringExtra("email");
+        this.state = intent.getStringExtra("state");
+        this.addressTwo = intent.getStringExtra("addressTwo");
+        this.street = intent.getStringExtra("street");
+        this.firstName = intent.getStringExtra("firstName");
+        this.lastName = intent.getStringExtra("lastName");
+        this.cardType = CardType.valueOf(intent.getStringExtra("card_type"));
+        this.city = intent.getStringExtra("city");
 
         //Generating Automatic Categories
         categoryList = resetCategories(categoryList);
@@ -60,6 +91,21 @@ public class BudgetActivity extends AppCompatActivity {
                 fetchAdapter(categoryList);
             }
         });
+    }
+
+    private void finishSetUp() {
+        if (this.finished) {
+            this.finish.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    setUserItems();
+                    Intent i = new Intent(BudgetActivity.this, HomeActivity.class);
+
+
+
+                }
+            });
+        }
     }
 
     private void wireWidgets() {
@@ -122,11 +168,48 @@ public class BudgetActivity extends AppCompatActivity {
         int remaining = this.income - (housing + power + utility + grocery + education);
         return remaining / 4;
     }
-    
+
     //Implementing CategoryAdapter with recycler view
     void fetchAdapter(List<Category> categoryList){
         CategoryAdapter adapter = new CategoryAdapter(categoryList);
         catList.setLayoutManager(new LinearLayoutManager(this));
         catList.setAdapter(adapter);
+    }
+
+
+    private void setUserItems() {
+        this.user.setIncome(income);
+
+        this.user.setFirstName(this.firstName);
+        this.user.setLastName(this.lastName);
+        this.user.setAddress(this.number, this.street, this.addressTwo,
+                this.city, this.state,
+                this.zip);
+
+        this.user.setEmail(this.email);
+        this.user.setCardInfo(this.cardType, this.card_num,
+                this.cvv, this.dateOne, this.dateTwo, this.monthOne, this.monthTwo, this.yearOne,
+                this.yearTwo, this.user.getAddress());
+        this.user.setCardType(this.cardType.toString());
+
+        this.passData.put("firstName", this.firstName);
+        this.passData.put("lastName", this.lastName);
+        this.passData.put("number", Integer.toString(this.number));
+        this.passData.put("street", this.street);
+        this.passData.put("addressTwo", this.addressTwo);
+        this.passData.put("city", this.city);
+        this.passData.put("income", Integer.toString(this.income));
+        this.passData.put("zip", Integer.toString(this.zip));
+        this.passData.put("card_num", Long.toString(this.card_num));
+        this.passData.put("card_type", this.cardType.toString());
+        this.passData.put("cvv", Integer.toString(this.cvv));
+        this.passData.put("dateOne", Integer.toString(this.dateOne));
+        this.passData.put("dateTwo", Integer.toString(this.dateTwo));
+        this.passData.put("monthOne", Integer.toString(this.monthOne));
+        this.passData.put("monthTwo", Integer.toString(this.monthTwo));
+        this.passData.put("yearOne", Integer.toString(this.yearOne));
+        this.passData.put("yearTwo", Integer.toString(this.yearTwo));
+        this.passData.put("email", this.email);
+        this.passData.put("state", this.state);
     }
 }
