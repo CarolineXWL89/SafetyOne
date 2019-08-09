@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         this.wireWidgets();
+        this.signUp();
 
     }
 
@@ -42,11 +43,13 @@ public class MainActivity extends AppCompatActivity {
     private void signUp() {
         //TODO sign up w/ CapitalOneAPI
         //TODO will redirect to registration activity
-        this.signIn.setOnClickListener(new View.OnClickListener() {
+        System.out.print("setting on click listener");
+        this.signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this, "Creating a New Account", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(MainActivity.this, RegistrationActivity.class);
+                i.putExtra("registeredFirst", false);
                 startActivity(i);
             }
         });
