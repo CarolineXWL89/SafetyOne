@@ -13,7 +13,7 @@ public class Category {
         this.name = name;
         this.allocated = allocated;
         this.used = used;
-    }
+    }   //used = amount spent
 
     public String getName() {
         return name;
