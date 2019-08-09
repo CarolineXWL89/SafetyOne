@@ -101,7 +101,7 @@ public class RegistrationActivity extends AppCompatActivity {
         this.nextReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent();
+                Intent i = new Intent(RegistrationActivity.this, BudgetActivity.class);
                 i.putExtra("user", user);
                 startActivity(i);
             }

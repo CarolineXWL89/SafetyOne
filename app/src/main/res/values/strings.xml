@@ -37,4 +37,5 @@
     <string name="vendor_val">H and M</string>
     <string name="purchase_time_val">10 pm</string>
     <string name="vendorName">Chik-Fil-A</string>
+    <string name="finish">Finish</string>
 </resources>
