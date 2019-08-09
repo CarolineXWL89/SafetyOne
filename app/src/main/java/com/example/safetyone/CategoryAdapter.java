@@ -45,7 +45,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
          ViewHolder(View view){
             super(view);
-            cardView = view.findViewById(R.id.cardView_category);
+            cardView = view.findViewById(R.id.cardView_vendor);
             category = view.findViewById(R.id.textView_category);
             amount = view.findViewById(R.id.editText_amount);
             canLock = view.findViewById(R.id.switch_lockable);
