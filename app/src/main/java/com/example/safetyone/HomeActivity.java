@@ -7,12 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class HomeActivity extends AppCompatActivity {
 
     private Button sort;
-    private View bottom;
-    private View top;
+    private TextView tile;
     private RecyclerView transactions;
 
     @Override
@@ -24,7 +24,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void wireWidgets() {
-        this.sort = findViewById(R.id.button_sort);
+        this.sort = findViewById(R.id.button);
         this.bottom = findViewById(R.id.view_bottom);
         this.top = findViewById(R.id.view_top);
         this.transactions = findViewById(R.id.recyclerView_transactions);

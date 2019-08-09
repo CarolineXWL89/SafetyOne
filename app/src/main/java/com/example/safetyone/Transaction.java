@@ -18,7 +18,6 @@ public class Transaction {
         this.amount = amount;
         this.time = time;
         this.category = category;
-
     }
 
     public String getTime() {
