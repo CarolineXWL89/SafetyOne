@@ -38,12 +38,25 @@ public class MainActivity extends AppCompatActivity {
 
     private void login() {
         //TODO sign in w/ CapitalOne API
+        this.signIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "Signing In", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(MainActivity.this, HomeActivity.class);
+                i.putExtra("loggedIn", true);
+                i.putExtra("username", username.toString());
+                i.putExtra("password", password.toString());
+                i.putExtra("remember", remember.isChecked());
+                startActivity(i);
+            }
+        });
+
     }
 
     private void signUp() {
         //TODO sign up w/ CapitalOneAPI
         //TODO will redirect to registration activity
-        System.out.print("setting on click listener");
+//        System.out.print("setting on click listener");
         this.signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
