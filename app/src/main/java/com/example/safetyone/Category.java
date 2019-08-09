@@ -46,12 +46,12 @@ public class Category {
         if (year%4 == 0){
             return 29;
         }else{
-            return 28
+            return 28;
         }
     }
 
     private double getTimeRatio () {
-        int day = (LocalDateTime.now()).getDayOfYear()
+        int day = (LocalDateTime.now()).getDayOfYear();
         int daysInMonth = getDaysInMonth((LocalDateTime.now()).getMonthValue(),
                                          (LocalDateTime.now()).getYear());
         return ((double)(day))/((double)(daysInMonth));
