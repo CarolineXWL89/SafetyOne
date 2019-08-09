@@ -1,11 +1,12 @@
 package com.example.safetyone;
 
-public class User {
+public class User implements java.io.Serializable{
     private String firstName, lastName, username, password, state, cardType, city, email;
     private double income;
     private long cardNum;
     private int dateTwo, yearOne, monthTwo, yearTwo, monthOne, dateOne, cvv, zip;
     private Address address;
+    private CardInfo cardInfo;
 
     public String getFirstName() {
         return firstName;
@@ -79,7 +80,7 @@ public class User {
         this.income = income;
     }
 
-    public long getCardNum() {
+    /*public long getCardNum() {
         return cardNum;
     }
 
@@ -133,15 +134,15 @@ public class User {
 
     public void setDateOne(int dateOne) {
         this.dateOne = dateOne;
-    }
+    }*/
 
-    public int getCvv() {
+   /* public int getCvv() {
         return cvv;
     }
 
     public void setCvv(int cvv) {
         this.cvv = cvv;
-    }
+    }*/
 
     /*public int getZip() {
         return zip;
@@ -150,6 +151,16 @@ public class User {
     public void setZip(int zip) {
         this.zip = zip;
     }*/
+
+    public CardInfo getCardInfo() {
+        return this.cardInfo;
+    }
+
+    public void setCardInfo(CardType cardType, long cardNum, int cvv, int dateOne, int dateTwo,
+                            int monthOne, int monthTwo, int yearOne, int yearTwo, Address address) {
+        this.cardInfo = new CardInfo(cardType, cardNum, cvv, dateOne * 10 + dateTwo, monthOne
+                * 10 + monthTwo, yearOne * 10 + yearTwo, address);
+    }
 
     public Address getAddress() {
         return address;

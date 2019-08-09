@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -30,6 +31,9 @@ public class RegistrationActivity extends AppCompatActivity {
 
         this.wireWidgets();
         this.user = new User();
+        this.setUserGeneral();
+        this.nextPage();
+
     }
 
     private void wireWidgets() {
@@ -63,16 +67,16 @@ public class RegistrationActivity extends AppCompatActivity {
         //TODO create user w/ no info yet
         Intent i = getIntent(); //do we need this???
         //TODO make sure fields are non-nullable
-        this.user.setDateTwo(Integer.getInteger(this.dateTwo.getText().toString()));
-        this.user.setYearOne(Integer.getInteger(this.yearOne.getText().toString()));
-        this.user.setMonthTwo(Integer.getInteger(this.monthTwo.getText().toString()));
-        this.user.setYearTwo(Integer.getInteger(this.yearTwo.getText().toString()));
-        this.user.setMonthOne(Integer.getInteger(this.monthOne.getText().toString()));
-        this.user.setDateOne(Integer.getInteger(this.dateOne.getText().toString()));
-        this.user.setCvv(Integer.getInteger(this.CVV.getText().toString()));
+//        this.user.setDateTwo(Integer.getInteger(this.dateTwo.getText().toString()));
+//        this.user.setYearOne(Integer.getInteger(this.yearOne.getText().toString()));
+//        this.user.setMonthTwo(Integer.getInteger(this.monthTwo.getText().toString()));
+//        this.user.setYearTwo(Integer.getInteger(this.yearTwo.getText().toString()));
+//        this.user.setMonthOne(Integer.getInteger(this.monthOne.getText().toString()));
+//        this.user.setDateOne();
+//        this.user.setCvv(Integer.getInteger(this.CVV.getText().toString()));
 //        this.user.setZip(Integer.getInteger(this.zip.getText().toString()));
         this.user.setIncome(Integer.getInteger(this.income.getText().toString()));
-        this.user.setCardNum(Long.getLong(this.cardNum.getText().toString()));
+//        this.user.setCardNum(Long.getLong(this.cardNum.getText().toString()));
 
         this.user.setFirstName(this.firstName.getText().toString());
         this.user.setLastName(this.lastName.getText().toString());
@@ -83,12 +87,28 @@ public class RegistrationActivity extends AppCompatActivity {
                 Integer.getInteger(this.zip.getText().toString()));
 
         this.user.setEmail(this.email.getText().toString());
-        this.user.
+        this.user.setCardInfo(CardType.valueOf(this.typeCard.getSelectedItem().toString()), Long.getLong(this.cardNum.getText().toString()),
+                Integer.getInteger(this.CVV.getText().toString()), Integer.getInteger(this.dateOne.getText().toString()),
+                Integer.getInteger(this.dateTwo.getText().toString()), Integer.getInteger(this.monthOne.getText().toString()),
+                Integer.getInteger(this.monthTwo.getText().toString()), Integer.getInteger(this.yearOne.getText().toString()),
+                Integer.getInteger(this.yearTwo.getText().toString()), this.user.getAddress());
+        this.user.setCardType(this.typeCard.getSelectedItem().toString());
     }
 
     private void parseAddress() {
         int divIndex = this.addressOne.getText().toString().indexOf(" ");
         this.number = Integer.getInteger(this.addressOne.getText().toString().substring(0, divIndex));
         this.street = this.addressOne.getText().toString().substring(this.addressOne.getText().toString().indexOf(" ") + 1);
+    }
+
+    private void nextPage() {
+        this.nextReg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                i.putExtra("user", user);
+                startActivity(i);
+            }
+        });
     }
 }
