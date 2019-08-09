@@ -21,9 +21,6 @@ public class RegistrationActivity extends AppCompatActivity {
 
     private int number = 0;
     private String street = "";
-//    private String additional = "";
-//    private Address address = null;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -72,20 +69,10 @@ public class RegistrationActivity extends AppCompatActivity {
         if (this.canReg) {
             //TODO create user w/ no info yet
             //TODO make sure fields are non-nullable
-//        this.user.setDateTwo(Integer.getInteger(this.dateTwo.getText().toString()));
-//        this.user.setYearOne(Integer.getInteger(this.yearOne.getText().toString()));
-//        this.user.setMonthTwo(Integer.getInteger(this.monthTwo.getText().toString()));
-//        this.user.setYearTwo(Integer.getInteger(this.yearTwo.getText().toString()));
-//        this.user.setMonthOne(Integer.getInteger(this.monthOne.getText().toString()));
-//        this.user.setDateOne();
-//        this.user.setCvv(Integer.getInteger(this.CVV.getText().toString()));
-//        this.user.setZip(Integer.getInteger(this.zip.getText().toString()));
             this.user.setIncome(Integer.getInteger(this.income.getText().toString()));
-//        this.user.setCardNum(Long.getLong(this.cardNum.getText().toString()));
 
             this.user.setFirstName(this.firstName.getText().toString());
             this.user.setLastName(this.lastName.getText().toString());
-//        this.user.setCity(this.city.getText().toString());
             this.parseAddress();
             this.user.setAddress(this.number, this.street, this.addressTwo.getText().toString(),
                     this.city.getText().toString(), this.state.getSelectedItem().toString(),
