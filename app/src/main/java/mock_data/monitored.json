@@ -1,0 +1,19 @@
+{
+    "monitored": [
+        {
+            "vendor": "Starbucks",
+            "limit": 40.00,
+            "spent": 10.00
+        },
+        {
+            "vendor": "Target",
+            "limit": 60.00,
+            "spent": 10.00
+        },
+        {
+            "vendor": "Amazon",
+            "limit": 60.00,
+            "spent": 20.00
+        }
+    ]
+}
