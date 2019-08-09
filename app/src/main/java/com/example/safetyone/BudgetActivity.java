@@ -33,6 +33,8 @@ public class BudgetActivity extends AppCompatActivity {
     private int income;// = 5000;
     private int age;// = 18;
 
+    ArrayList<Category> categoryList = new ArrayList<>();
+
     public void onCreate (Bundle savedInstance){
 
         //Declare the XML scene
@@ -47,20 +49,19 @@ public class BudgetActivity extends AppCompatActivity {
         this.age = intent.getIntExtra("age", 38);
 
         //Generating Automatic Categories
-        ArrayList<Category> categoryList = new ArrayList<>();
         categoryList = resetCategories(categoryList);
 
-        //Implementing CategoryAdapter with recycler view
-        CategoryAdapter adapter = new CategoryAdapter(categoryList);
-        catList.setLayoutManager(new LinearLayoutManager(this));
-        catList.setAdapter(adapter);
+        //Fetch Categories
+        fetchAdapter(categoryList);
 
         //add category
-        /*createCategory.setOnClickListener(new View.OnClickListener(){
-            public void onCLick(View v){
-
+        createCategory.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                categoryList.add(new Category("New Category", 0, 0));
+                fetchAdapter(categoryList);
             }
-        });*/
+        });
     }
 
     private void wireWidgets() {
@@ -122,4 +123,12 @@ public class BudgetActivity extends AppCompatActivity {
         int remaining = this.income - (housing + power + utility + grocery + education);
         return remaining / 4;
     }
+
+    //Implementing CategoryAdapter with recycler view
+    void fetchAdapter(List<Category> categoryList){
+        CategoryAdapter adapter = new CategoryAdapter(categoryList);
+        catList.setLayoutManager(new LinearLayoutManager(this));
+        catList.setAdapter(adapter);
+    }
+
 }
