@@ -28,4 +28,5 @@
     <string name="income">123456</string>
     <string name="dollar">$</string>
     <string name="next">Next</string>
+    <string name="vendorName">Chik-Fil-A</string>
 </resources>
