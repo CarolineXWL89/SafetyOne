@@ -17,6 +17,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private Spinner typeCard, state;
     private Button nextReg;
     private User user;
+    private boolean canReg;
 
     private int number = 0;
     private String street = "";
@@ -31,6 +32,10 @@ public class RegistrationActivity extends AppCompatActivity {
 
         this.wireWidgets();
         this.user = new User();
+
+        Intent i = getIntent();
+        this.canReg = i.getBooleanExtra("registeredFirst", true); //why is default true?
+
         this.setUserGeneral();
         this.nextPage();
 
@@ -64,9 +69,9 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     private void setUserGeneral() {
-        //TODO create user w/ no info yet
-        Intent i = getIntent(); //do we need this???
-        //TODO make sure fields are non-nullable
+        if (this.canReg) {
+            //TODO create user w/ no info yet
+            //TODO make sure fields are non-nullable
 //        this.user.setDateTwo(Integer.getInteger(this.dateTwo.getText().toString()));
 //        this.user.setYearOne(Integer.getInteger(this.yearOne.getText().toString()));
 //        this.user.setMonthTwo(Integer.getInteger(this.monthTwo.getText().toString()));
@@ -75,24 +80,28 @@ public class RegistrationActivity extends AppCompatActivity {
 //        this.user.setDateOne();
 //        this.user.setCvv(Integer.getInteger(this.CVV.getText().toString()));
 //        this.user.setZip(Integer.getInteger(this.zip.getText().toString()));
-        this.user.setIncome(Integer.getInteger(this.income.getText().toString()));
+            this.user.setIncome(Integer.getInteger(this.income.getText().toString()));
 //        this.user.setCardNum(Long.getLong(this.cardNum.getText().toString()));
 
-        this.user.setFirstName(this.firstName.getText().toString());
-        this.user.setLastName(this.lastName.getText().toString());
+            this.user.setFirstName(this.firstName.getText().toString());
+            this.user.setLastName(this.lastName.getText().toString());
 //        this.user.setCity(this.city.getText().toString());
-        this.parseAddress();
-        this.user.setAddress(this.number, this.street, this.addressTwo.getText().toString(),
-                this.city.getText().toString(), this.state.getSelectedItem().toString(),
-                Integer.getInteger(this.zip.getText().toString()));
+            this.parseAddress();
+            this.user.setAddress(this.number, this.street, this.addressTwo.getText().toString(),
+                    this.city.getText().toString(), this.state.getSelectedItem().toString(),
+                    Integer.getInteger(this.zip.getText().toString()));
 
-        this.user.setEmail(this.email.getText().toString());
-        this.user.setCardInfo(CardType.valueOf(this.typeCard.getSelectedItem().toString()), Long.getLong(this.cardNum.getText().toString()),
-                Integer.getInteger(this.CVV.getText().toString()), Integer.getInteger(this.dateOne.getText().toString()),
-                Integer.getInteger(this.dateTwo.getText().toString()), Integer.getInteger(this.monthOne.getText().toString()),
-                Integer.getInteger(this.monthTwo.getText().toString()), Integer.getInteger(this.yearOne.getText().toString()),
-                Integer.getInteger(this.yearTwo.getText().toString()), this.user.getAddress());
-        this.user.setCardType(this.typeCard.getSelectedItem().toString());
+            this.user.setEmail(this.email.getText().toString());
+            this.user.setCardInfo(CardType.valueOf(this.typeCard.getSelectedItem().toString()), Long.getLong(this.cardNum.getText().toString()),
+                    Integer.getInteger(this.CVV.getText().toString()), Integer.getInteger(this.dateOne.getText().toString()),
+                    Integer.getInteger(this.dateTwo.getText().toString()), Integer.getInteger(this.monthOne.getText().toString()),
+                    Integer.getInteger(this.monthTwo.getText().toString()), Integer.getInteger(this.yearOne.getText().toString()),
+                    Integer.getInteger(this.yearTwo.getText().toString()), this.user.getAddress());
+            this.user.setCardType(this.typeCard.getSelectedItem().toString());
+
+            //reset value
+            this.canReg = true;
+        }
     }
 
     private void parseAddress() {
