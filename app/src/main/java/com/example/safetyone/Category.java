@@ -1,5 +1,8 @@
 package com.example.safetyone;
 
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+
 import java.time.LocalDateTime;
 public class Category {
     private String name;
@@ -46,18 +49,20 @@ public class Category {
         if (year%4 == 0){
             return 29;
         }else{
-            return 28
+            return 28;
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private double getTimeRatio () {
-        int day = (LocalDateTime.now()).getDayOfYear()
+        int day = (LocalDateTime.now()).getDayOfYear();
         int daysInMonth = getDaysInMonth((LocalDateTime.now()).getMonthValue(),
                                          (LocalDateTime.now()).getYear());
         return ((double)(day))/((double)(daysInMonth));
     }
 
     //recommended value = .1 for yellowTolerance
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public String getPerformance (double yellowTolerance) {
         if (Math.abs(getTimeRatio() - getMoneyRatio()) <= yellowTolerance){
             return "yellow";
