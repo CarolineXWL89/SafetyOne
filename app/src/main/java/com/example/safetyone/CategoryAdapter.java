@@ -19,7 +19,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     public CategoryAdapter(List<Category> categories){this.categories = categories;}
 
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
-        View superView = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout, parent, false);
+        View superView = LayoutInflater.from(parent.getContext()).inflate(R.layout.reg_budget_layout, parent, false);
         return new ViewHolder(superView);
     }
 
