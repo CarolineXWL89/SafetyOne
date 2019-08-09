@@ -100,9 +100,7 @@ public class BudgetActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     setUserItems();
                     Intent i = new Intent(BudgetActivity.this, HomeActivity.class);
-
-
-
+                    startActivity(i);
                 }
             });
         }
