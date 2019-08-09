@@ -12,7 +12,7 @@ import android.widget.TextView;
 public class HomeActivity extends AppCompatActivity {
 
     private Button sort;
-    private TextView tile;
+    private TextView title;
     private RecyclerView transactions;
 
     @Override
@@ -24,9 +24,8 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void wireWidgets() {
-        this.sort = findViewById(R.id.button);
-        this.bottom = findViewById(R.id.view_bottom);
-        this.top = findViewById(R.id.view_top);
+        this.sort = findViewById(R.id.button_sort);
+        this.title = findViewById(R.id.title);
         this.transactions = findViewById(R.id.recyclerView_transactions);
     }
 
