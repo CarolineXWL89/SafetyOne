@@ -44,7 +44,7 @@ public class BudgetActivity extends AppCompatActivity {
         Intent intent = getIntent();
 //        this.income =intent.getIntExtra("income", 5114);
 //        this.age = intent.getIntExtra("age", 38);
-        this.user = intent.getSerializableExtra("user");
+        this.user = (User) intent.getSerializableExtra("user");
 
         //Generating Automatic Categories
         categoryList = resetCategories(categoryList);
