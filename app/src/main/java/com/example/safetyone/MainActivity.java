@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         this.wireWidgets();
         this.signUp();
+        this.login();
 
     }
 
@@ -34,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
         this.signIn = findViewById(R.id.button_signin);
         this.signUp = findViewById(R.id.button_signup);
         this.remember = findViewById(R.id.checkBox_remember);
+
+        Toast.makeText(MainActivity.this, "Please fill out both fields before signing in or registering", Toast.LENGTH_LONG).show();
     }
 
     private void login() {
