@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -53,6 +54,13 @@ public class BudgetActivity extends AppCompatActivity {
         CategoryAdapter adapter = new CategoryAdapter(categoryList);
         catList.setLayoutManager(new LinearLayoutManager(this));
         catList.setAdapter(adapter);
+
+        //add category
+        /*createCategory.setOnClickListener(new View.OnClickListener(){
+            public void onCLick(View v){
+
+            }
+        });*/
     }
 
     private void wireWidgets() {
