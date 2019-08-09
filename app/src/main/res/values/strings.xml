@@ -34,7 +34,7 @@
     <string name="vendor">Vendor:</string>
     <string name="purchase_time">Purchase Time:</string>
     <string name="amount_val">34.57</string>
-    <string name="vendor_val">H&M</string>
+    <string name="vendor_val">H and M</string>
     <string name="purchase_time_val">10 pm</string>
     <string name="vendorName">Chik-Fil-A</string>
 </resources>
